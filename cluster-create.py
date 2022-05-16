@@ -129,7 +129,7 @@ else:
 # files = sp.getoutput("ls -1 *.yaml | awk '{print $1}'")
 # files = list(files)
 
-op = sp.Popen(["/bin/sh", "-c", "ls -q *.yaml"], stdout=sp.PIPE)
+op = sp.Popen(["/bin/sh", "-c", "ls *.yaml"], stdout=sp.PIPE)
 op = op.stdout.readlines()
 
 # print(len(op))
