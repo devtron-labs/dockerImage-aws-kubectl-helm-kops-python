@@ -26,6 +26,9 @@ RUN chmod +x kops
 # RUN ./aws/install
 # RUN rm -f awscliv2.zip
 
+# Installing Azure CLI
+# RUN curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
 FROM alpine:latest
 COPY cluster-create.py .
 RUN apk add --update --no-cache ca-certificates python3 py3-pip
@@ -33,6 +36,7 @@ COPY --from=build /linux-amd64/helm /usr/local/bin/helm
 COPY --from=build /kubectl /usr/local/bin/kubectl
 COPY --from=build /kops /usr/local/bin/kops
 RUN pip3 install awscli
+RUN curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 
 
